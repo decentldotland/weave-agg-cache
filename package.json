@@ -1,0 +1,30 @@
+{
+  "name": "weave-agg-cache",
+  "version": "0.0.1",
+  "description": "cache node for the weave-aggregator and other data-complex protocols",
+  "main": "./src/app.js",
+  "type": "module",
+  "scripts": {
+    "start": "node ./src/app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/decentldotland/weave-agg-cache.git"
+  },
+  "bugs": {
+    "url": "https://github.com/decentldotland/weave-agg-cache/issues"
+  },
+  "homepage": "https://github.com/decentldotland/weave-agg-cache#readme",
+  "keywords": ["web3", "social-protocols", "decentland", "social-media"],
+  "author": "charmful0x",
+  "license": "MIT",
+  "dependencies": {
+    "arweave": "^1.11.4",
+    "axios": "^0.27.2",
+    "base64url": "^3.0.1",
+    "cors": "^2.8.5",
+    "express": "^4.18.1",
+    "node-cache": "^5.1.2",
+    "weave-aggregator": "^0.3.6"
+  }
+}
