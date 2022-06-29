@@ -40,6 +40,5 @@ async function fetchProtocols() {
     };
   } catch (error) {
     console.log(error);
-    return {};
   }
 }
