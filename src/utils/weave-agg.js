@@ -72,6 +72,7 @@ export async function getArtByCity() {
         };
         feed.push(art);
       } catch (error) {
+        console.log(error);
         continue;
       }
     }
