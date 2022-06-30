@@ -23,9 +23,13 @@ app.get("/protocols", async (req, res) => {
 });
 
 app.listen(port, async () => {
-  while (true) {
-    await cache();
-    await sleep(15);
-    console.log(`listening at PORT: ${port}`);
+  try {
+    while (true) {
+      await cache();
+      await sleep(15);
+      console.log(`listening at PORT: ${port}`);
+    }
+  } catch (error) {
+    console.log(error);
   }
 });
