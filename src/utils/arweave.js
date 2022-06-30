@@ -18,9 +18,7 @@ export async function decodeTransaction(txid) {
 
     return data;
   } catch (error) {
-  	await reseed(txid);
     console.log(error);
-    return false;
   }
 }
 export async function getTxStatus(txid) {
@@ -59,7 +57,6 @@ export async function getBundledData(txid) {
     return res;
   } catch(error) {
     console.log(error)
-    return false
   }
 }
 
