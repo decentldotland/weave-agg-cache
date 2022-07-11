@@ -1,4 +1,5 @@
 import { getWeaveAggregator } from "weave-aggregator";
+import { getMirrorCover } from "./mirror-helpers.js";
 import { decodeTransaction, getTxStatus, getBundledData } from "./arweave.js";
 
 export async function getArdrive() {
@@ -32,14 +33,25 @@ export async function getMirrorXyz() {
         const txData = await decodeTransaction(tx.id);
         const blogObj = JSON.parse(txData);
 
+        const mirror_url = `https://mirror.xyz/${
+          blogObj.authorship.contributor
+        }/${
+          tx.tags.find((tag) => tag.name === "Original-Content-Digest")?.value
+        }`;
+        const cover_img = await getMirrorCover(mirror_url);
+
         const blog = {
           bid: tx.id,
           title: blogObj.content.title,
           timestamp: blogObj.content.timestamp,
           poster: blogObj.authorship.contributor,
+          mirror_url: mirror_url,
+          cover_img: cover_img,
         };
 
-        feed.push(blog);
+        if (blog.title !== "mirror" && !!cover_img) {
+          feed.push(blog);
+        }
       } catch (error) {
         continue;
       }
