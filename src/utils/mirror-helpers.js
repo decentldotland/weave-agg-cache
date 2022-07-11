@@ -20,9 +20,9 @@ export async function getMirrorCover(blog_url) {
     const extension = extensionStart.slice(1, extensionFin);
 
     const cover_url = `https://mirror-media.imgix.net/publication-images/${img_id}.${extension}`;
-    console.log(cover_url);
     return cover_url;
   } catch (error) {
+    console.log("\nCANNOT GET MEDIA URL")
     return false;
   }
 }
