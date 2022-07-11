@@ -48,8 +48,11 @@ export async function getMirrorXyz() {
           mirror_url: mirror_url,
           cover_img: cover_img,
         };
-
-        if (blog.title !== "mirror" && !!cover_img) {
+        // `cover_img` with length over than 77 means an error
+        if (blog.title !== "mirror" && !!cover_img && cover_img.length < 77) {
+          console.log("\n\n\n");
+          console.log(blog);
+          console.log("\n\n\n");
           feed.push(blog);
         }
       } catch (error) {
