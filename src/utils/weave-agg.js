@@ -1,5 +1,6 @@
 import { getWeaveAggregator } from "weave-aggregator";
 import { getMirrorCover } from "./mirror-helpers.js";
+import { getPermatweetBody } from "./metaweave-helpers.js";
 import { decodeTransaction, getTxStatus, getBundledData } from "./arweave.js";
 
 export async function getArdrive() {
@@ -92,6 +93,34 @@ export async function getArtByCity() {
       }
     }
     console.log(feed);
+    return feed;
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+export async function getMetaweave() {
+  try {
+    const feed = [];
+    const res = await getWeaveAggregator("metaweave-permatweets");
+    console.log(res);
+
+    for (const tx of res) {
+      try {
+        const tweetUrl = await getPermatweetBody(tx.id);
+
+        const tweetBody = {
+          tid: tx.id,
+          poster: tx.owner,
+          tweetUrl: tweetUrl,
+        };
+
+        feed.push(tweetBody);
+      } catch (error) {
+        console.log(error);
+        continue;
+      }
+    }
     return feed;
   } catch (error) {
     console.log(error);
