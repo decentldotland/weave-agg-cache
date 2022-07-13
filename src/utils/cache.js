@@ -1,4 +1,9 @@
-import { getArdrive, getMirrorXyz, getArtByCity } from "./weave-agg.js";
+import {
+  getArdrive,
+  getMirrorXyz,
+  getArtByCity,
+  getMetaweave,
+} from "./weave-agg.js";
 import NodeCache from "node-cache";
 import base64url from "base64url";
 
@@ -32,11 +37,13 @@ async function fetchProtocols() {
     const mirror = await getMirrorXyz();
     const ardrive = await getArdrive();
     const abc = await getArtByCity();
+    const permatweets = await getMetaweave();
 
     return {
       mirror,
       ardrive,
       abc,
+      permatweets,
     };
   } catch (error) {
     console.log(error);
