@@ -84,6 +84,7 @@ export async function getArtByCity() {
           slug: artObj?.slug,
           creator: artObj?.creator,
           creationDate: artObj?.published,
+          timestamp: tx?.timestamp,
           image: `https://arweave.net/${artObj?.images?.[0]?.["preview"]}`,
         };
         feed.push(art);
