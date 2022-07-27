@@ -22,5 +22,9 @@ npm install .
 ### 1- protocols cache state
 - `GET /protocols`
 
+## Techstack
+- [weave-aggregator lib](https://github.com/decentldotland/weave-aggregator)
+- [Meson Network](https://meson.network/)
+
 ## License
 This projects is licened under the [MIT license](./LICENSE)
