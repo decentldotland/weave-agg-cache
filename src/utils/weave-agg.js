@@ -1,6 +1,7 @@
 import { getWeaveAggregator } from "weave-aggregator";
 import { getMirrorCover } from "./mirror-helpers.js";
 import { getPermatweetBody } from "./metaweave-helpers.js";
+import { MESON_CDN_ENDPOINT } from "./constants.js";
 import { decodeTransaction, getTxStatus, getBundledData } from "./arweave.js";
 
 export async function getArdrive() {
@@ -85,7 +86,7 @@ export async function getArtByCity() {
           creator: artObj?.creator,
           creationDate: artObj?.published,
           timestamp: tx?.timestamp,
-          image: `https://arweave.net/${artObj?.images?.[0]?.["preview"]}`,
+          image: `${MESON_CDN_ENDPOINT}/${artObj?.images?.[0]?.["preview"]}`,
         };
         feed.push(art);
       } catch (error) {
